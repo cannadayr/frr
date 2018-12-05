@@ -34,5 +34,6 @@ nhrpd=no
 eigrpd=no
 babeld=no
 sharpd=no
+zapd=no
 pbrd=no
 bfdd=no

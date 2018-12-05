@@ -385,6 +385,8 @@ AC_ARG_ENABLE(pbrd,
   AS_HELP_STRING([--disable-pbrd], [do not build pbrd]))
 AC_ARG_ENABLE(sharpd,
   AS_HELP_STRING([--enable-sharpd], [build sharpd]))
+AC_ARG_ENABLE(zapd,
+  AS_HELP_STRING([--enable-zapd], [build zapd]))
 AC_ARG_ENABLE(staticd,
   AS_HELP_STRING([--disable-staticd], [do not build staticd]))
 AC_ARG_ENABLE(bgp-announce,
@@ -1441,6 +1443,7 @@ AM_CONDITIONAL(ISISD, test "${enable_isisd}" != "no")
 AM_CONDITIONAL(PIMD, test "${enable_pimd}" != "no")
 AM_CONDITIONAL(PBRD, test "${enable_pbrd}" != "no")
 AM_CONDITIONAL(SHARPD, test "${enable_sharpd}" = "yes")
+AM_CONDITIONAL(ZAPD, test "${enable_zapd}" = "yes")
 AM_CONDITIONAL(STATICD, test "${enable_staticd}" != "no")
 
 if test "${enable_bgp_announce}" = "no";then

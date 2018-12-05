@@ -409,6 +409,7 @@ static inline uint8_t lsp_distance(enum lsp_types_t type)
 	case ZEBRA_LSP_NONE:
 	case ZEBRA_LSP_SHARP:
 	case ZEBRA_LSP_SR:
+	case ZEBRA_LSP_ZAP:
 		return 150;
 	}
 
@@ -434,6 +435,8 @@ static inline enum lsp_types_t lsp_type_from_re_type(int re_type)
 		return ZEBRA_LSP_BGP;
 	case ZEBRA_ROUTE_SHARP:
 		return ZEBRA_LSP_SHARP;
+	case ZEBRA_ROUTE_ZAP:
+		return ZEBRA_LSP_ZAP;
 	default:
 		return ZEBRA_LSP_NONE;
 	}
@@ -457,6 +460,8 @@ static inline int re_type_from_lsp_type(enum lsp_types_t lsp_type)
 		return ZEBRA_ROUTE_KERNEL;
 	case ZEBRA_LSP_SHARP:
 		return ZEBRA_ROUTE_SHARP;
+	case ZEBRA_LSP_ZAP:
+		return ZEBRA_ROUTE_ZAP;
 	}
 
 	/*
@@ -482,6 +487,8 @@ static inline const char *nhlfe_type2str(enum lsp_types_t lsp_type)
 		return "SR";
 	case ZEBRA_LSP_SHARP:
 		return "SHARP";
+	case ZEBRA_LSP_ZAP:
+		return "ZAP";
 	case ZEBRA_LSP_NONE:
 		return "Unknown";
 	}

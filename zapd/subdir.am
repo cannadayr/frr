@@ -1,0 +1,28 @@
+#
+# zapd
+#
+
+if ZAPD
+noinst_LIBRARIES += zapd/libzap.a
+sbin_PROGRAMS += zapd/zapd
+dist_examples_DATA += zapd/zapd.conf.sample
+vtysh_scan += $(top_srcdir)/zapd/zap_vty.c
+man8 += $(MANBUILD)/zapd.8
+endif
+
+zapd_libzap_a_SOURCES = \
+	zapd/zap_zebra.c \
+	zapd/zap_vty.c \
+	# end
+
+noinst_HEADERS += \
+	zapd/zap_vty.h \
+	zapd/zap_zebra.h \
+	# end
+
+zapd/zap_vty_clippy.c: $(CLIPPY_DEPS)
+zapd/zap_vty.$(OBJEXT): zapd/zap_vty_clippy.c
+
+zapd_zapd_SOURCES = zapd/zap_main.c
+zapd_zapd_LDADD = zapd/libzap.a lib/libfrr.la @LIBCAP@
+
